@@ -1,0 +1,68 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>iambored</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 2rem;
+      background-image: url('A_digital_painting_features_a_textured_background_.png');
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      font-family: Arial, sans-serif;
+      color: #333;
+      text-align: center;
+    }
+    .box {
+      margin: 2rem auto;
+      padding: 1.5rem;
+      width: 80%;
+      max-width: 600px;
+      background-color: rgba(255,255,255,0.85);
+      border-radius: 15px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      cursor: pointer;
+    }
+    .countdown {
+      margin-top: 2rem;
+      font-size: 1.5rem;
+      color: #111;
+      font-weight: bold;
+      background-color: rgba(255,255,255,0.85);
+      padding: 1rem;
+      border-radius: 10px;
+      display: inline-block;
+      box-shadow: 0 0 8px rgba(0,0,0,0.15);
+    }
+  </style>
+</head>
+<body>
+  <h1>you were bored. now you're here.</h1>
+  <div class="box" onclick="goFunny()">something funny</div>
+  <div class="box" onclick="goBetter()">become better</div>
+  <div class="box" onclick="goSpotify()">spotify</div>
+  <div class="countdown" id="countdown">something is happening in...</div>
+
+  <script>
+    const countdownTarget = new Date("2025-08-22T00:00:00").getTime();
+
+    function updateCountdown() {
+      const now = new Date().getTime();
+      const distance = countdownTarget - now;
+      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+      document.getElementById("countdown").innerHTML =
+        `something is happening in ${days}d ${hours}h ${minutes}m ${seconds}s`;
+    }
+
+    updateCountdown();
+    setInterval(updateCountdown, 1000);
+  </script>
+</body>
+</html>
